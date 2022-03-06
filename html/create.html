@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <title>2pyo create</title>
+        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready (function () {
+                var i = 0;
+                $('.btnAdd').click (function () {
+                    $('.addInput').append (
+                        '<input type="type" id="vote" name="vote' + (i++) + '"  value="">\
+                        <button type="button" class="btnRemove">항목 삭제</button><br>'
+                    );
+                    $('.btnRemove').on('click', function () { 
+                        $(this).prev().remove();
+                        $(this).next().remove();
+                        $(this).remove();
+                    });
+                });
+                /**$("#create").click(function(){
+                if($("#title").val().length==0){ alert("주제를 입력하세요."); $("#title").focus(); return false; }
+                if($("#vote" + a).val().length==0){ alert("항목을 입력하세요."); $("#vote").focus(); return false; }
+                });*/
+            });
+        </script>
+
+    </head>
+    <body>
+        <form action="/creates" method="POST">
+            <label>투표 주제: </label><input id="title" name='title' type='text'/><br>
+            <div class="addInput">
+            </div>
+            <button type="button" class="btnAdd">항목 추가</button>
+            <input type="submit" id="create" value="투표 시작">
+        </form>
+    </body>
+</html>
